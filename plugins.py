@@ -201,7 +201,20 @@ def transpose(image):
     Precondition: image is a 2d table of RGB objects
     """
     # Change this to return True when the function is implemented
-    return False
+
+    image_copy = image[:]
+    image.clear()
+
+    num_rows = len(image_copy)
+    num_cols = len(image_copy[0])
+
+    for col in range(num_cols):
+        new_row = []
+        for row in range(num_rows):
+            new_row.append(image_copy[row][col])
+        image.append(new_row)
+
+    return True
 
 
 def rotate(image,right=False):
@@ -223,7 +236,16 @@ def rotate(image,right=False):
     """
     # We recommend enforcing the precondition for right
     # Change this to return True when the function is implemented
-    return False
+
+    assert type(right) == bool, 'right param should be boolean'
+
+    if right:
+        flip(image, True)
+        transpose(image)
+    else:
+        transpose(image)
+        flip(image, True)
+    return True
 
 
 # ADVANCED OPTIONAL FUNCTIONS
