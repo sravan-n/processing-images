@@ -167,11 +167,18 @@ def flip(image,vertical=False):
     assert vertical == True or vertical == False, 'Error: vertical is required'
 
     if vertical:
-        print('To Do')
+        height = len(image)
+        top_pos = 0
+        bot_pos = height-1
+        while top_pos < height // 2:
+            temp = image[top_pos]
+            image[top_pos] = image[bot_pos]
+            image[bot_pos] = temp
+            top_pos = top_pos+1
+            bot_pos = bot_pos-1
     else:
         for row in image:
             row.reverse()
-
 
     return True
 
