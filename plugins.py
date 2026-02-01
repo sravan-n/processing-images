@@ -132,16 +132,15 @@ def mono(image, sepia=False):
     height = len(image)
     width = len(image[0])
 
-    if sepia: # Sepia tone conversion
-        print('Need to be implemented')
-    else: # Greyscale conversion
-        for row in range(height):
-            for col in range(width):
-                pixel = image[row][col]
-                # compute btightness
-                brightness = 0.3 * pixel.red + 0.6 * pixel.green + 0.1 * pixel.blue
-                # reassign rgb with brightness by converting it into integer
-                pixel.red = int(brightness)
+    for row in range(height):
+        for col in range(width):
+            pixel = image[row][col]
+            brightness = 0.3 * pixel.red + 0.6 * pixel.green + 0.1 * pixel.blue
+            pixel.red = int(brightness)
+            if sepia:
+                pixel.green = int(0.6 * brightness)
+                pixel.blue = int(0.4 * brightness)
+            else:
                 pixel.green = int(brightness)
                 pixel.blue = int(brightness)
 
